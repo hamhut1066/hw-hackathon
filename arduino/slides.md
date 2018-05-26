@@ -63,7 +63,7 @@ email: "@container-solutions.com"
 
 * [Pinout](https://cdn-learn.adafruit.com/assets/assets/000/047/156/original/circuit_playground_Adafruit_Circuit_Playground_Express_Pinout.png?1507829017)
 
---- 
+---
 
 ## Ideas
 
