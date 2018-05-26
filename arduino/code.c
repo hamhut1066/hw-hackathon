@@ -4,21 +4,7 @@
 #include <Wire.h>
 #include <SPI.h>
 
-uint32_t color_range = 16777215;
-float X,Y,Z;
-
-// part 2
-float delta;
-float threshold = 6;
-int tick_threshold = 2;
-int ticks = 0;
-bool rolled = false;
-
-//part 3
-int no_sides = 6;
-
 void setup() {
-  // hwhile (!Serial);
   Serial.begin(9600);
   Serial.println("Circuit Playground test!");
 
@@ -26,26 +12,16 @@ void setup() {
   CircuitPlayground.setAccelRange(LIS3DH_RANGE_2_G);
 }
 
-void roll_dice() {
-  // clear last roll
-  int i;
-  for (i = 0; i < 5; i++) {
-    CircuitPlayground.setPixelColor(i,0,0,0);
-  }
-
-  
-  // use delta for random input.
-  int dice_no = 1 + ((int)(delta * 1000) % (no_sides));
-  Serial.print("Rolled:"); Serial.println(dice_no);
-  
-  // calculate output
-  for (i = 0; i < dice_no; i++) {
-      CircuitPlayground.setPixelColor(i,128,128,128);
-  }
-}
 
 void loop() {
+  get_shakey();
+  check_shakey();
+  // output
+}
 
+float X,Y,Z;
+
+void get_shakey() {
   // Sanity check
   CircuitPlayground.redLED(HIGH);
   delay(100);
@@ -55,7 +31,6 @@ void loop() {
   X = CircuitPlayground.motionX();
   Y = CircuitPlayground.motionY();
   Z = CircuitPlayground.motionZ();
-  delta = (abs(X) + abs(Y) + abs(Z)) / 3;
 
   // Generate feedback
   uint32_t Xc = (int)(1000 * CircuitPlayground.motionX()) % 256;
@@ -66,7 +41,17 @@ void loop() {
   CircuitPlayground.setPixelColor(7,Xc,Yc,Zc);
   CircuitPlayground.setPixelColor(8,Zc,Xc,Yc);
   CircuitPlayground.setPixelColor(9,Yc,Zc,Xc);
+}
 
+// part 2
+float delta;
+float threshold = 6;
+int tick_threshold = 2;
+int ticks = 0;
+bool rolled = false;
+
+void check_shakey() {
+  delta = (abs(X) + abs(Y) + abs(Z)) / 3;
 
   // Check if should roll dice.
   if (delta > threshold) {
@@ -85,5 +70,26 @@ void loop() {
     CircuitPlayground.setPixelColor(8,0,0,0);
     ticks = 0;
     rolled = false;
+  }
+}
+
+//part 3
+int no_sides = 6;
+
+void roll_dice() {
+  // clear last roll
+  int i;
+  for (i = 0; i < 5; i++) {
+    CircuitPlayground.setPixelColor(i,0,0,0);
+  }
+
+  
+  // use delta for random input.
+  int dice_no = 1 + ((int)(delta * 1000) % (no_sides));
+  Serial.print("Rolled:"); Serial.println(dice_no);
+  
+  // calculate output
+  for (i = 0; i < dice_no; i++) {
+      CircuitPlayground.setPixelColor(i,128,128,128);
   }
 }
