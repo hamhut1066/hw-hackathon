@@ -1,54 +1,74 @@
 ---
 Author: Hamish Hutchings
-title: Arduino IDE
-email: "@hamhut1066"
+title: Sunday Hardware Hackathon
+email: "@container-solutions.com"
 ---
 
-# What?
-
-- Installing Arduino IDE
-- Configuring IDE
-- Getting something onto our hardware
-- Try out something basic
-
----
-
-# Disclaimer
-
-- Everything is being done in a VM
+### Agenda
+* 09:30 Welcome
+* 10:00 Intro
+* 11:00 Start hacking
+* 12:00 Lunch (sponsored by Container Solutions)
+* 13:00 More hacking
+* 17:30 Demo & Drinks
+* 19:00 Doors closed
 
 ---
 
-# Installing Arduino IDE
-
-- Dependencies: `apt get install openjdk-11-jdk-headless bossa-cli
-- Install the IDE https://www.arduino.cc/en/main/software
-  - Extract downloaded file
-  - Run `./install.sh`
-- Add yourself to the `dialout` group
+### Adafruit Circuit Playground Express
+![labels](circuit_playground_express-labeled.jpg)
 
 ---
 
-# Configure IDE
+### Setup Express Board
 
-- Open preferences
-- Add [1] to 'Boards Manager URLs'
-- Tools -> Boards -> BoardManager
-- Search 'Adafruit SAMD'
-- Install 'Adafruit SAMD Boards'
-
-[1]: https://adafruit.github.io/arduino-board-index/package_adafruit_index.json
+* [Driver for Windows users](https://learn.adafruit.com/adafruit-circuit-playground-express/adafruit2-windows-driver-installation)
+* Connect to USB
+* Press reset button to go to bootloader
 
 ---
 
-# Getting something onto our Hardware
-
-- Put it into flash mode
-- Select File -> Examples -> Basic -> Blink
-- Select 'Upload'
+# Microsoft Makecode
 
 ---
 
-# Let's build a die
+* [Adafruit Makecode](https://makecode.adafruit.com/)
+* [Get started](https://learn.adafruit.com/adafruit-circuit-playground-express/downloading-and-flashing)
+* [Documentation](https://makecode.adafruit.com/docs)
 
-Let's see what happens
+---
+
+# CircuitPython
+
+---
+
+* [Get started](https://learn.adafruit.com/adafruit-circuit-playground-express/circuitpython-quickstart)
+* [Install Mu editor](https://learn.adafruit.com/adafruit-circuit-playground-express/installing-mu-editor)
+* [Documentation](http://circuitpython.readthedocs.io/projects/circuitplayground/en/latest/api.html)
+
+---
+
+# Arduino IDE
+
+---
+
+* [Get started](https://learn.adafruit.com/adafruit-circuit-playground-express/set-up-arduino-ide)
+* Dependencies: `apt get install openjdk-11-jdk-headless bossa-cli
+* [Arduino IDE](https://www.arduino.cc/en/main/software)
+* [Board manager config](https://adafruit.github.io/arduino-board-index/package_adafruit_index.json)
+
+---
+
+## Useful Links
+
+* [Pinout](https://cdn-learn.adafruit.com/assets/assets/000/047/156/original/circuit_playground_Adafruit_Circuit_Playground_Express_Pinout.png?1507829017)
+
+--- 
+
+## Ideas
+
+* Polyhedron (dice)
+* Light sensor
+* Countdown
+* Timer 
+* Temperature sensor
